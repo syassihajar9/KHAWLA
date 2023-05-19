@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Document</title>
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="stile.css">
+    </head>
+    <form id="signup-form">
+        <h1 class="titre1">Inscrivez-vous</h1>
+        <div class="separation"></div>
+        <div class="corps-formulaire">
+        <div class="gauche">
+            <div class="boite">
+                <div class="groupe">
+                    <label>Votre prénom</label>
+                    
+                    <input id="prenom" type="text" placeholder="entrer votre prénom">
+                    <i class="fa-solid fa-user"></i>
+                </div>    
+                <div class="groupe">
+                    <label>Votre adresse e-mail</label>
+                    <input id="email" type="text" placeholder="entrer votre adresse e-mail">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>    
+                    <div class="groupe">
+                        <label>Votre téléphone</label>
+                        <input type="text" placeholder="entrer votre téléphone">
+                        <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="groupe">
+                <label>Mot passe</label>
+                <input id="passe" type="password" placeholder="entrer votre mot passe">
+                <i > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                  </svg> </i>
+              </div>  
+              <br>
+              <input type="checkbox" onclick="showPass()"> Show password 
+              <div>
+                <span id="s1" style="color: #29a396;"></span>
+                </div>
+             </div>
+             <br>
+             <button onclick="add()" id="button">Envoyer</button>
+    </form>
+    <script>
+        function showPass(){
+
+            var passValue = document.getElementById('passe');
+            if(passValue.type == 'text'){
+                passValue.type = 'password';
+            }else if(passValue.type == 'password'){
+                passValue.type = 'text';
+            }
+        }
+        function add(){
+            document.getElementById('s1').innerHTML = '';
+            var passValue = document.getElementById('passe').value;
+
+            
+            event.preventDefault();
+            const username = document.getElementById("prenom").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("passe").value;
+            localStorage.setItem("prenom", username);
+            localStorage.setItem("email", email);
+            localStorage.setItem("passe", password);
+            alert("Inscription réussie!");
+            window.location.href = "log in.html";
+        
+        }
+        const form = document.getElementById("signup-form");
+
+        form.addEventListener("submit", function(event) {
+            add();
+        });
+    </script>
+    </body>
+</html>
