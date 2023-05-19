@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Document</title>
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="stile.css">
+    </head>
+    <form id="login-form">
+        <h1 class="titre1">Contactez-vous</h1>
+        <div class="separation"></div>
+        <div class="corps-formulaire">
+        <div class="gauche">
+            <div class="boite">   
+                <div class="groupe">
+                    <label>Votre adresse e-mail</label>
+                    <input id="email" type="text" placeholder="entrer votre adresse e-mail">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>    
+            <div class="groupe">
+                <label>Mot passe</label>
+                <input id="passe" type="password" placeholder="entrer votre mot passe">
+                <i > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                  </svg> </i>
+              </div>  
+              <br>
+              <input type="checkbox" onclick="showPass()"> Show password 
+              
+             </div>
+             <br>
+             <button id="button">Envoyer</button>
+    </form>
+    <script>
+        function showPass(){
+      
+            var passValue = document.getElementById('passe');
+            if(passValue.type == 'text'){
+                passValue.type = 'password';
+            }else if(passValue.type == 'password'){
+                passValue.type = 'text';
+            }
+        }
+        const form = document.getElementById("login-form");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("email").value;
+            const password = document.getElementById("passe").value;
+            const storedUsername = localStorage.getItem("email");
+            const storedPassword = localStorage.getItem("passe");
+            if (username === storedUsername && password === storedPassword) {
+                alert("Connexion réussie!");
+                window.location.href = "study.html";
+            } else {
+                alert("Nom d'utilisateur ou mot de passe incorrect.");
+            }
+        });
+    </script>
+    </body>
+</html>
